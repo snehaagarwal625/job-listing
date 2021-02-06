@@ -1,0 +1,30 @@
+<div class="container">
+    <div style="display: flex;">
+        <div>
+            <h1 class="brand"><span>Welcome User </span>Login</h1>
+        </div>
+        <div style="margin: auto;"><button mat-raised-button color="primary" [routerLink]="['']">Register</button></div>
+    </div>
+    <div class="wrapper animated bounceInLeft">
+        <div class="company-info">
+            <h3>Panda Enterprises</h3>
+            <ul>
+                <li><i class="fa fa-road"></i>Your address</li>
+                <li><i class="fa fa-phone"></i> (+91) **********</li>
+                <li><i class="fa fa-envelope"></i>Your website</li>
+            </ul>
+        </div>
+        <div class="contact">
+            <h3>Email Us</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <p>
+                    <label>Email Address</label>
+                    <input type="email" name="email" formControlName="email" required>
+                </p>
+                <p class="full">
+                    <button type="submit">Submit</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

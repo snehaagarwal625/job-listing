@@ -1,0 +1,60 @@
+<div class="container">
+    <div style="display: flex;">
+        <div>
+            <h1 class="brand"><span>Welcome User </span>Register</h1>
+        </div>
+        <div style="margin: auto;"><button mat-raised-button color="primary" [routerLink]="['/login']">Login</button></div>
+    </div>
+    <div class="wrapper animated bounceInLeft">
+        <div class="company-info">
+            <h3>Panda Enterprises</h3>
+            <ul>
+                <li><i class="fa fa-road"></i>Your address</li>
+                <li><i class="fa fa-phone"></i> (+91) **********</li>
+                <li><i class="fa fa-envelope"></i>Your website</li>
+            </ul>
+        </div>
+        <div class="contact">
+            <h3>Email Us</h3>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <p>
+                    <label>Firstname</label>
+                    <input type="text" name="firstname" formControlName="firstname" required>
+                </p>
+                <p>
+                    <label>Lastname</label>
+                    <input type="text" name="lastname" formControlName="lastname" required>
+                </p>
+                <p>
+                    <label>Email Address</label>
+                    <input type="email" name="email" formControlName="email" required>
+                </p>
+                <p>
+                    <label>Phone Number</label>
+                    <input type="number" name="phone" formControlName="mobileNo" required>
+                </p>
+                <p>
+                    <label>Location</label>
+                    <input type="text" name="Location" formControlName="location" required>
+                </p>
+
+                <p>
+                    <label style="padding-bottom: 5%;">Sign up as a Employer or Employee?</label>
+                    <mat-radio-group aria-label="Select an option" formControlName="user">
+                        <mat-radio-button value="employer" style="padding-right: 5%;">Employer</mat-radio-button>
+                        <mat-radio-button value="employee">Employee</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+
+                <p *ngIf="registerForm.value.user==='employee'" class="resume">
+                    <label>Upload Resume</label>
+                    <input type="file" name="Resume" formControlName="resume" accept="application/pdf,application/msword,
+  application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+                </p>
+                <p class="full">
+                    <button type="submit">Submit</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
