@@ -1,0 +1,33 @@
+<div>
+    <h3>Add Job</h3>
+    <form [formGroup]="addJobForm" (ngSubmit)="onSubmit()">
+        <p>
+            <label>Title</label>
+            <input type="text" name="title" formControlName="title" required>
+        </p>
+        <p>
+            <label>Description</label>
+            <input type="text" name="description" formControlName="description" required>
+        </p>
+        <p>
+            <label>Expire Date</label>
+            <input type="date" name="expire_date" formControlName="expire_date" required>
+        </p>
+        <p>
+            <label>Location</label>
+            <select name='locality' formControlName="locality" required>
+                <option *ngFor="let item of locations">
+                  {{item}}
+                </option>    
+            </select>
+        </p>
+        <p>
+            <label>Posted By</label>
+            <input type="text" name="posted_by" formControlName="posted_by" required>
+        </p>
+        <p class="full">
+            <button mat-raised-button color="primary" mat-dialog-close type="submit">Submit</button>
+        </p>
+
+    </form>
+</div>
