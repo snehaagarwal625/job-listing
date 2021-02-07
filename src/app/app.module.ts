@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ApiService } from "./shared/api.service"
+import { OtpComponent } from './otp/otp.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { ApiService } from "./shared/api.service"
     RegisterComponent,
     LoginComponent,
     DashboardComponent
+    OtpComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { ApiService } from "./shared/api.service"
     MatButtonModule,
     MatCardModule,
     HttpClientModule
+    FormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
