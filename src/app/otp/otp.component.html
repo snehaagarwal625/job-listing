@@ -1,0 +1,33 @@
+<div class="container">
+    <h1 class="brand"><span>Welcome User </span> Sign-up</h1>
+    <div class="wrapper animated bounceInLeft">
+        <div class="company-info">
+            <h3>Panda Enterprises</h3>
+            <ul>
+                <li><i class="fa fa-road"></i> NIT KKR</li>
+                <li><i class="fa fa-phone"></i> (+91) 9358668593</li>
+                <li><i class="fa fa-envelope"></i> test@panda.com</li>
+            </ul>
+        </div>
+        <div class="contact">
+
+            <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+                <p>
+                    <label>Enter otp</label>
+                    <input type="text" name="otp" formControlName="email" required>
+                </p>
+
+                <p class="full">
+                    <button type="submit">Submit</button>
+                </p>
+
+            </form>
+            <br>
+            <form [formGroup]="otpForm" (ngSubmit)="onReSubmit()">
+                <p class="full">
+                    <button type="submit">resend otp</button>
+                </p>
+                </form>
+        </div>
+    </div>
+</div>
