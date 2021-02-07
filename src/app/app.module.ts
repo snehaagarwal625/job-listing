@@ -14,14 +14,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ApiService } from "./shared/api.service"
 import { OtpComponent } from './otp/otp.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
-    OtpComponent
+    DashboardComponent,
+    OtpComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +35,10 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
-    HttpClientModule
-    FormsModule
+    HttpClientModule,
+    FormsModule,
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

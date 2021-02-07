@@ -1,5 +1,5 @@
 export class ApiConstants {
-    baseUrl = "localhost:3000"
+    baseUrl = "http://localhost:3000"
 }
 export interface Jobs {
     "title": string,

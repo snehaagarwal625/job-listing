@@ -13,7 +13,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this._apiSvc.getPosts().subscribe((res:Array<Jobs>)=>{
       this.jobs = res;
+      console.log(this.jobs); 
     })
+    
+  }
+
+  onApply(){
+    
   }
 
 }

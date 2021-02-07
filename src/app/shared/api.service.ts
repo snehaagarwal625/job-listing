@@ -11,6 +11,11 @@ export class ApiService {
   getPosts()
   {
     const url=`${this.baseUrl}/jobs`
-    return this.http.get(url,{withCredentials:true});
+    return this.http.get(url);
+  }
+
+  applyPosts(){
+    const url = `${this.baseUrl}/jobs`
+    // return this.http.post(url, );
   }
 }
