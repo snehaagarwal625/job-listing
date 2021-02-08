@@ -18,6 +18,9 @@ import { HeaderComponent } from './header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';  
+import { AddJobComponent } from './add-job/add-job.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     DashboardComponent,
     OtpComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddJobComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +44,11 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     MatIconModule,
     MatToolbarModule,
-    CommonModule
+    CommonModule,
+    MatDialogModule,
+    MatDatepickerModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, AddJobComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
