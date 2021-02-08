@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; 
+import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'app-register',
@@ -8,8 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  user;
+  constructor(private router: Router,
+    private _apiSvc:ApiService) { }
 
   ngOnInit(): void {
   }
@@ -24,8 +26,10 @@ export class RegisterComponent implements OnInit {
   })
 
   onSubmit() {
-    console.log(this.registerForm);
-    this.router.navigateByUrl('otp');
+    this._apiSvc.saveUser(this.registerForm.value).subscribe((res)=>{
+      this.user = res;
+      console.log(this.user); 
+    })
+    this.router.navigateByUrl('otp', {state: { example: this.registerForm.value }} );
   }
-
 }

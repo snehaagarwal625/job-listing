@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'app-otp',
@@ -7,16 +9,27 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./otp.component.scss']
 })
 export class OtpComponent implements OnInit {
-
-  constructor() { }
+  form;
+  constructor(private router: Router,
+    public activatedRoute: ActivatedRoute,
+    private _apiSvc:ApiService)
+   { 
+    this.form= this.router.getCurrentNavigation().extras.state;
+   }
 
   ngOnInit(): void {
+  
   }
   otpForm = new FormGroup({
-    email: new FormControl(),
+    otp: new FormControl(),
   })
   onSubmit() {
-    console.log(this.otpForm);
+    this.form.example['otp']=this.otpForm.value.otp;
+    console.log(this.form.example);
+    
+    this._apiSvc.saveUserWithOtp(this.form.example).subscribe((res)=>{
+      console.log(res); 
+    })
   }
   onReSubmit(){
     console.log(this.otpForm);

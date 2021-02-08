@@ -33,10 +33,6 @@
                     <label>Phone Number</label>
                     <input type="number" name="phone" formControlName="mobileNo" required>
                 </p>
-                <p>
-                    <label>Location</label>
-                    <input type="text" name="Location" formControlName="location" required>
-                </p>
 
                 <p>
                     <label style="padding-bottom: 5%;">Sign up as a Employer or Employee?</label>
@@ -44,6 +40,11 @@
                         <mat-radio-button value="employer" style="padding-right: 5%;">Employer</mat-radio-button>
                         <mat-radio-button value="employee">Employee</mat-radio-button>
                     </mat-radio-group>
+                </p>
+
+                <p *ngIf="registerForm.value.user==='employee'">
+                    <label>Location</label>
+                    <input type="text" name="Location" formControlName="location" required>
                 </p>
 
                 <p *ngIf="registerForm.value.user==='employee'" class="resume">

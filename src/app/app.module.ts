@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CommonModule } from '@angular/common';  
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HttpClientModule,
     FormsModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CommonModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

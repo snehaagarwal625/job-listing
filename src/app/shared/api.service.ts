@@ -18,4 +18,24 @@ export class ApiService {
     const url = `${this.baseUrl}/jobs`
     // return this.http.post(url, );
   }
+
+  saveUser(payload){
+    let url;
+    if(payload.user==='employer'){
+     url = `${this.baseUrl}/employers/register`;
+    } else {
+       url = `${this.baseUrl}/users/registers`;
+    }
+    return this.http.post(url,payload);
+  }
+
+  saveUserWithOtp(payload){
+    let url;
+    if(payload.user==='employer'){
+     url = `${this.baseUrl}/employers/register-otp`;
+    } else {
+       url = `${this.baseUrl}/users/register-otp`;
+    }
+    return this.http.post(url,payload);
+  }
 }
