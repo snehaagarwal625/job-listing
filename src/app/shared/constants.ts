@@ -1,5 +1,8 @@
 export class ApiConstants {
-    baseUrl = "http://localhost:3000"
+    baseUrl = "http://localhost:3000";
+    locations = [
+        'Bangalore' , 'Mumbai' , 'Delhi', 'Chennai', 'Hyderabad', 'Gurgaon'
+    ]
 }
 export interface Jobs {
     "title": string,
