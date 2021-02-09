@@ -8,9 +8,9 @@ import {ApiConstants} from "./constants"
 export class ApiService {
   baseUrl = new ApiConstants().baseUrl;
   constructor(private http: HttpClient) { }
-  getPosts()
+  getPostsByID(emp_id:number)
   {
-    const url=`${this.baseUrl}/jobs`
+    const url=`${this.baseUrl}/jobs/${emp_id}`
     return this.http.get(url,{withCredentials:true});
   }
 
@@ -36,7 +36,7 @@ export class ApiService {
     } else {
        url = `${this.baseUrl}/users/register-otp`;
     }
-    return this.http.post(url,payload);
+    return this.http.post(url,{withCredentials:true,payload});
   }
   addJob(payload:any){
     const url = `${this.baseUrl}/jobs`;
