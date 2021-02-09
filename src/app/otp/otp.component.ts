@@ -28,7 +28,11 @@ export class OtpComponent implements OnInit {
     console.log(this.form.example);
     
     this._apiSvc.saveUserWithOtp(this.form.example).subscribe((res)=>{
-      console.log(res); 
+      if(this.form.example.user == 'employer') {
+
+      } else {
+        
+      }
     })
   }
   onReSubmit(){
