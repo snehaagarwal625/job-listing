@@ -26,13 +26,8 @@ export class OtpComponent implements OnInit {
   onSubmit() {
     this.form.example['otp']=this.otpForm.value.otp;
     console.log(this.form.example);
-    
-    this._apiSvc.saveUserWithOtp(this.form.example).subscribe((res)=>{
-      if(this.form.example.user == 'employer') {
-
-      } else {
-        
-      }
+    this._apiSvc.saveUserWithOtp(this.form.example).subscribe((res:any)=>{
+      this.router.navigateByUrl('dashboard', {state: {id:res.id}}  );
     })
   }
   onReSubmit(){

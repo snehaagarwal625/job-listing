@@ -9,6 +9,13 @@ export class ApiService {
   baseUrl = new ApiConstants().baseUrl;
   httpOptions: { headers: any; };
   constructor(private http: HttpClient) { }
+  
+  getPostsByID(emp_id:number)
+  {
+    const url=`${this.baseUrl}/jobs/${emp_id}`
+    return this.http.get(url,{withCredentials:true});
+  }
+  
   getPosts() {
     const url = `${this.baseUrl}/jobs`
     return this.http.get(url);
