@@ -9,6 +9,19 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding:1em;
   }
+  .register {
+    background-color: #92bde7;
+    color: black;
+  }
+  .register-div {
+    position: absolute;
+    right: 72px;
+    top: 40px;
+  }
+  .text-danger{
+    color: red;
+    font-size: smaller;
+  }
   
   .container{
     max-width:1170px;
@@ -24,6 +37,7 @@
   
   .brand{
     text-align: center;
+    color: white;
   }
   
   // .brand span{

@@ -13,7 +13,18 @@ export class ApiService {
   getPostsByID(emp_id:number)
   {
     const url=`${this.baseUrl}/jobs/${emp_id}`
-    return this.http.get(url,{withCredentials:true});
+    return this.http.get(url);
+  }
+
+  getUserByID(emp_id:number)
+  {
+    const url=`${this.baseUrl}/user/${emp_id}`
+    return this.http.get(url);
+  }
+
+  getEmployerById(id){
+    const url = `${this.baseUrl}/employers/${id}`;
+    return this.http.get(url);
   }
   
   getPosts() {
@@ -48,9 +59,20 @@ export class ApiService {
     }
     return this.http.post(url, payload);
   }
-  
+
   addJob(payload: any) {
     const url = `${this.baseUrl}/jobs`;
     return this.http.post(url, payload);
   }
+  verifyUser(payload){
+    const url = `${this.baseUrl}/employers/verify-login`;
+    return this.http.post(url,payload);
+  }
+  verifyUserWithOtp(payload){
+    const url = `${this.baseUrl}/employers/login`;
+    return this.http.post(url,payload);
+  }
+
+
+  
 }

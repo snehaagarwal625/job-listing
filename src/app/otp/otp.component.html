@@ -1,12 +1,12 @@
 <div class="container">
-    <h1 class="brand"><span>Welcome User </span> Sign-up</h1>
+    <h1 class="brand"><span>Welcome User</span> Enter OTP</h1>
     <div class="wrapper animated bounceInLeft">
         <div class="company-info">
-            <h3>Panda Enterprises</h3>
+            <h3>Sneha's Enterprises</h3>
             <ul>
-                <li><i class="fa fa-road"></i> NIT KKR</li>
-                <li><i class="fa fa-phone"></i> (+91) 9358668593</li>
-                <li><i class="fa fa-envelope"></i> test@panda.com</li>
+                <li><i class="fa fa-road"></i>Bangalore</li>
+                <li><i class="fa fa-phone"></i> (+91) 8389874080</li>
+                <li><i class="fa fa-envelope"></i>Sneha's Job Portal</li>
             </ul>
         </div>
         <div class="contact">
@@ -15,6 +15,10 @@
                 <p>
                     <label>Enter otp</label>
                     <input type="text" name="otp" formControlName="otp" required>
+                    <span class="text-danger"
+                        *ngIf="(otpFormControl.otp.touched || submitted) && otpFormControl.otp.errors?.required">
+                        Otp is required
+                    </span>
                 </p>
 
                 <p class="full">

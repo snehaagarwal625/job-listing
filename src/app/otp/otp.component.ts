@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../shared/api.service';
 
@@ -10,27 +10,46 @@ import { ApiService } from '../shared/api.service';
 })
 export class OtpComponent implements OnInit {
   form;
+  submitted=false;
   constructor(private router: Router,
     public activatedRoute: ActivatedRoute,
-    private _apiSvc:ApiService)
-   { 
-    this.form= this.router.getCurrentNavigation().extras.state;
-   }
+    private _apiSvc: ApiService) {
+    this.form = this.router.getCurrentNavigation().extras.state;
+  }
 
   ngOnInit(): void {
-  
+
   }
   otpForm = new FormGroup({
-    otp: new FormControl(),
+    otp: new FormControl('', Validators.required),
   })
-  onSubmit() {
-    this.form.example['otp']=this.otpForm.value.otp;
-    console.log(this.form.example);
-    this._apiSvc.saveUserWithOtp(this.form.example).subscribe((res:any)=>{
-      this.router.navigateByUrl('dashboard', {state: {id:res.id}}  );
-    })
+
+  get otpFormControl() {
+    return this.otpForm.controls;
   }
-  onReSubmit(){
+  onSubmit() {
+    this.submitted=true;
+    if (this.otpForm.valid) {
+      this.form.example['otp'] = this.otpForm.value.otp;
+      console.log(this.form.example);
+      if (!this.form.example.firstname) {
+        this._apiSvc.verifyUserWithOtp(this.form.example).subscribe((res: any) => {
+          console.log(res.id);
+
+          this.router.navigateByUrl('dashboard', { state: { id: res.id } });
+        });
+
+      } else {
+        this._apiSvc.saveUserWithOtp(this.form.example).subscribe((res: any) => {
+          console.log(res.id);
+
+          this.router.navigateByUrl('dashboard', { state: { id: res.id } });
+        });
+      }
+
+    }
+  }
+  onReSubmit() {
     console.log(this.otpForm);
   }
 

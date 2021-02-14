@@ -1,9 +1,9 @@
-nav {
-    height: 50px;
-    width: 100%;
-    background:#92bde7;
-}
 
+.add-job{
+    margin: 10px;
+    position: relative;
+    left: 25px;
+}
 .container {
     margin: 3px;
     width: 100%;
@@ -11,7 +11,12 @@ nav {
 
 .card {
     margin: 10px;
-    width: 30%;
+    width: 95%;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
 }
 
 mat-card {

@@ -3,15 +3,16 @@
         <div>
             <h1 class="brand"><span>Welcome User </span>Login</h1>
         </div>
-        <div style="margin: auto;"><button mat-raised-button color="primary" [routerLink]="['']">Register</button></div>
+        <div class="register-div"><button mat-raised-button color="primary" class="register"
+                [routerLink]="['']">Register</button></div>
     </div>
     <div class="wrapper animated bounceInLeft">
         <div class="company-info">
-            <h3>Panda Enterprises</h3>
+            <h3>Sneha's Enterprises</h3>
             <ul>
-                <li><i class="fa fa-road"></i>Your address</li>
-                <li><i class="fa fa-phone"></i> (+91) **********</li>
-                <li><i class="fa fa-envelope"></i>Your website</li>
+                <li><i class="fa fa-road"></i>Bangalore</li>
+                <li><i class="fa fa-phone"></i> (+91) 8389874080</li>
+                <li><i class="fa fa-envelope"></i>Sneha's Job Portal</li>
             </ul>
         </div>
         <div class="contact">
@@ -20,6 +21,14 @@
                 <p>
                     <label>Email Address</label>
                     <input type="email" name="email" formControlName="email" required>
+                    <span class="text-danger"
+                        *ngIf="(loginFormControl.email.touched || submitted) && loginFormControl.email.errors?.required">
+                        Email is required
+                    </span>
+                    <span class="text-danger"
+                        *ngIf="loginFormControl.email.touched && loginFormControl.email.errors?.email">
+                        Enter a valid email address
+                    </span>
                 </p>
                 <p class="full">
                     <button type="submit">Submit</button>

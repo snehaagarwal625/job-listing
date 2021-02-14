@@ -21,6 +21,10 @@ import { CommonModule } from '@angular/common';
 import { AddJobComponent } from './add-job/add-job.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { AppliedbyComponent } from './appliedby/appliedby.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     DashboardComponent,
     OtpComponent,
     HeaderComponent,
-    AddJobComponent
+    AddJobComponent,
+    AppliedbyComponent,
+    MyProfileComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatToolbarModule,
     CommonModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDividerModule
   ],
   providers: [ApiService, AddJobComponent],
   bootstrap: [AppComponent]

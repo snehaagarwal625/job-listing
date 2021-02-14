@@ -9,7 +9,20 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding:1em;
   }
-  
+
+  .text-danger{
+    color: red;
+    font-size: smaller;
+  }
+  .login-div {
+    position: absolute;
+    right: 72px;
+    top: 40px;
+  }
+  .login {
+    background-color: #92bde7;
+    color: black;
+  }
   .container{
     max-width:1170px;
     margin-left:auto;
@@ -24,6 +37,7 @@
   
   .brand{
     text-align: center;
+    color: white;
   }
   
   // .brand span{

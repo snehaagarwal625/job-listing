@@ -3,15 +3,17 @@
         <div>
             <h1 class="brand"><span>Welcome User </span>Register</h1>
         </div>
-        <div style="margin: auto;"><button mat-raised-button color="primary" [routerLink]="['/login']">Login</button></div>
+        <div class="login-div"><button mat-raised-button color="primary" class="login"
+                [routerLink]="['/login']">Login</button>
+        </div>
     </div>
     <div class="wrapper animated bounceInLeft">
         <div class="company-info">
-            <h3>Panda Enterprises</h3>
+            <h3>Sneha's Enterprises</h3>
             <ul>
-                <li><i class="fa fa-road"></i>Your address</li>
-                <li><i class="fa fa-phone"></i> (+91) **********</li>
-                <li><i class="fa fa-envelope"></i>Your website</li>
+                <li><i class="fa fa-road"></i>Bangalore</li>
+                <li><i class="fa fa-phone"></i> (+91) 8389874080</li>
+                <li><i class="fa fa-envelope"></i>Sneha's Job Portal</li>
             </ul>
         </div>
         <div class="contact">
@@ -19,38 +21,70 @@
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <p>
                     <label>Firstname</label>
-                    <input type="text" name="firstname" formControlName="firstname" required>
+                    <input type="text" name="firstname" formControlName="firstname">
+                    <span class="text-danger"
+                        *ngIf="(registerFormControl.firstname.touched || submitted) && registerFormControl.firstname.errors?.required">
+                        Firstname is required
+                    </span>
                 </p>
                 <p>
                     <label>Lastname</label>
-                    <input type="text" name="lastname" formControlName="lastname" required>
+                    <input type="text" name="lastname" formControlName="lastname">
+                    <span class="text-danger"
+                        *ngIf="(registerFormControl.lastname.touched || submitted) && registerFormControl.lastname.errors?.required">
+                        Lastname is required
+                    </span>
                 </p>
                 <p>
                     <label>Email Address</label>
-                    <input type="email" name="email" formControlName="email" required>
+                    <input type="email" name="email" formControlName="email">
+                    <span class="text-danger"
+                        *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
+                        Email is required
+                    </span>
+                    <span class="text-danger"
+                        *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
+                        Enter a valid email address
+                    </span>
                 </p>
                 <p>
                     <label>Phone Number</label>
                     <input type="number" name="phone" formControlName="mobileNo" required>
+                    <span class="text-danger"
+                        *ngIf="(registerFormControl.mobileNo.touched || submitted) && registerFormControl.mobileNo.errors?.required">
+                        Phone No is required
+                    </span>
                 </p>
 
                 <p>
                     <label style="padding-bottom: 5%;">Sign up as a Employer or Employee?</label>
-                    <mat-radio-group aria-label="Select an option" formControlName="user">
+                    <mat-radio-group aria-label="Select an option" formControlName="user" (change)="radioChange($event)">
                         <mat-radio-button value="employer" style="padding-right: 5%;">Employer</mat-radio-button>
-                        <mat-radio-button value="employee">Employee</mat-radio-button>
+                        <mat-radio-button value="employee" >Employee</mat-radio-button>
                     </mat-radio-group>
+                    <span class="text-danger"
+                        *ngIf="(registerFormControl.user.touched || submitted) && registerFormControl.user.errors?.required">
+                        User is required
+                    </span>
                 </p>
 
                 <p *ngIf="registerForm.value.user==='employee'">
                     <label>Location</label>
                     <input type="text" name="Location" formControlName="location" required>
+                    <span class="text-danger"
+                        *ngIf="(registerFormControl.location.touched || submitted) && registerFormControl.location.errors?.required && registerForm.value.user==='employee'">
+                        Location is required
+                    </span>
                 </p>
 
                 <p *ngIf="registerForm.value.user==='employee'" class="resume">
                     <label>Upload Resume</label>
                     <input type="file" name="Resume" formControlName="resume" accept="application/pdf,application/msword,
   application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+                    <span class="text-danger"
+                        *ngIf="(registerFormControl.resume.touched || submitted) && registerFormControl.resume.errors?.required && registerForm.value.user==='employee'">
+                        Resume is required
+                    </span>
                 </p>
                 <p class="full">
                     <button type="submit">Submit</button>

@@ -4,6 +4,7 @@ import {Jobs} from "../shared/constants";
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatDialog } from "@angular/material/dialog";
 import {AddJobComponent} from '../add-job/add-job.component'
+import { AppliedbyComponent } from '../appliedby/appliedby.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,6 +13,7 @@ import {AddJobComponent} from '../add-job/add-job.component'
 export class DashboardComponent implements OnInit {
   jobs:Array<Jobs>;
   emp_id: any;
+  user: any;
   
   constructor(private _apiSvc:ApiService,public dialog: MatDialog, private router: Router,) {
     this.emp_id= this.router.getCurrentNavigation().extras.state.id;
@@ -19,21 +21,37 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.emp_id);
-    
     this.fetchJobsById();
+    // this.user = this.fetchUserByJob();
     
   }
+
+  getEmployerById(){
+    this._apiSvc.getEmployerById(this.emp_id).subscribe((res)=>{
+      this.user=res; 
+    })
+    return this.user;
+  }
+
+  fetchUserByJob(id){
+    this._apiSvc.getUserByID(id).subscribe((res)=>{
+      this.user=res; 
+    })
+    return this.user;
+  }
+
   fetchJobsById(){
     this._apiSvc.getPostsByID(this.emp_id).subscribe((res:Array<Jobs>)=>{
       this.jobs = res;
       console.log(this.jobs); 
-    })
+    });
   }
   OpenAddJobDialog()
   {
     let dialogRef = this.dialog.open(AddJobComponent, {
       height: '400px',
-      width: '600px',
+      width: '500px',
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Job Added`); 
@@ -41,7 +59,17 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  onDelete(){
+  appliedBy(id) {
+    this.dialog.open(AppliedbyComponent, {
+      data: this.fetchUserByJob(id),
+    });
+  }
+
+  openProfile(){
+    this.router.navigateByUrl('dashboard/my-profile', {state: {user:this.user}}  );
+  }
+
+  onDelete() {
     
   }
 
