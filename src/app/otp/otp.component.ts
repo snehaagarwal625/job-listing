@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../shared/api.service';
+import {LocalStorageService} from '../services/local-storage.service'
 
 @Component({
   selector: 'app-otp',
@@ -13,9 +14,11 @@ export class OtpComponent implements OnInit {
   submitted=false;
   constructor(private router: Router,
     public activatedRoute: ActivatedRoute,
-    private _apiSvc: ApiService) {
-    this.form = this.router.getCurrentNavigation().extras.state;
-  }
+    private _apiSvc:ApiService,
+    private _localSvc:LocalStorageService)
+   { 
+    this.form= this.router.getCurrentNavigation().extras.state;
+   }
 
   ngOnInit(): void {
 
@@ -48,6 +51,13 @@ export class OtpComponent implements OnInit {
       }
 
     }
+    // this.form.example['otp']=this.otpForm.value.otp;
+    // console.log(this.form.example);
+    this._localSvc.setLocalstorageitem("id","b210");
+    this.router.navigateByUrl('dashboard')
+    // this._apiSvc.saveUserWithOtp(this.form.example).subscribe((res:any)=>{
+    //   this.router.navigateByUrl('dashboard', {state: {id:res.id}}  );
+    // })
   }
   onReSubmit() {
     console.log(this.otpForm);

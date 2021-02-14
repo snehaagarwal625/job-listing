@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service'
 import {Jobs} from "../shared/constants";
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import {LocalStorageService} from "./../services/local-storage.service"
 import {MatDialog } from "@angular/material/dialog";
 import {AddJobComponent} from '../add-job/add-job.component'
 import { AppliedbyComponent } from '../appliedby/appliedby.component';
@@ -15,12 +16,14 @@ export class DashboardComponent implements OnInit {
   emp_id: any;
   user: any;
   
-  constructor(private _apiSvc:ApiService,public dialog: MatDialog, private router: Router,) {
-    this.emp_id= this.router.getCurrentNavigation().extras.state.id;
+  constructor(private _apiSvc:ApiService,public dialog: MatDialog, private router: Router, private localSvc:LocalStorageService) {
+    // this.emp_id= this.router.getCurrentNavigation().extras.state.id;
    }
 
   ngOnInit(): void {
     console.log(this.emp_id);
+    console.log(this.localSvc.getLocalstorageitem("id"));
+    
     this.fetchJobsById();
     // this.user = this.fetchUserByJob();
     
